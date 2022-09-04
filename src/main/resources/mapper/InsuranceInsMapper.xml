@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mapper.InsuranceInsMapper">
+    <resultMap id="insMap" type="com.po.InsuranceIns">
+        <id property="id" column="id"></id>
+        <result property="insName" column="insName"></result>
+        <result property="insType" column="insType"></result>
+        <result property="details" column="details"></result>
+        <result property="buycondition" column="buycondition"></result>
+        <result property="payAmount" column="payAmount"></result>
+        <result property="endDate" column="endDate"></result>
+        <result property="creationDate1" column="creationDate"></result>
+        <result property="url" column="url"></result>
+    </resultMap>
+    <select id="getAllIns" parameterType="Integer" resultMap="insMap">
+         select * from insae_ins limit ${(page-1)*rows},${rows}
+    </select>
+    <select id="getMaxRow" resultType="Integer">
+        select count(*) from insae_ins
+    </select>
+    <select id="getByInsId" parameterType="Integer" resultMap="insMap">
+        select * from insae_ins where id=#{id}
+    </select>
+</mapper>

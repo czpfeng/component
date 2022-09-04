@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mapper.InsuranceMenuMapper">
+    <select id="getByMenuId" parameterType="Integer" resultType="com.po.InsuranceMenu">
+        select * from insae_menu im
+        where im.id in
+        <foreach collection="array" item="mid" open="(" separator="," close=")">#{mid}</foreach>
+    </select>
+    <select id="getByMenuPid" parameterType="Integer" resultType="com.po.InsuranceMenu">
+        select * from insae_menu im
+        where im.pid=#{pid}
+    </select>
+</mapper>
